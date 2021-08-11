@@ -1,0 +1,167 @@
+:root {
+    --calculator-width: clamp(10vw, 400px, 90vw);
+    --calculator-height: calc(var(--calculator-width) * 1.5); /* Aspect ratio 3:2 */
+    --shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    --light-gray: rgb(253, 253, 253);
+    --dark-gray: rgb(100, 100, 100);
+    --red: #ec4646;
+    --dark-red: #663f3f;
+    --blue: #51c4d3;
+    --dark-blue: #126e82;
+    --green: #d2e69c;
+    --dark-green: #206a5d;
+    --ani-time: 100ms;
+    --ani-function: ease-out;
+    --ani-mode: both;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Space Mono", monospace;
+    color: var(--dark-gray);
+
+    background-color: rgba(0, 0, 0, 0.8);
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 2%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    width: var(--calculator-width);
+    height: var(--calculator-height);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.screen {
+    width: 90%;
+    height: 15%;
+    padding: 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    letter-spacing: 0.2ch;
+    font-size: 1.3em;
+
+    background-color: var(--light-gray);
+
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.button-grid {
+    width: 90%;
+    height: 70%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 4%;
+    column-gap: calc(4%*1.5);
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    background-color: var(--dark-gray)
+}
+
+.double {
+    grid-column: span 2;
+    border-radius: 30px;
+}
+
+.btn:hover {
+    cursor: pointer;
+
+    animation-name: normal-button;
+    animation-duration: var(--ani-time);
+    animation-timing-function: var(--ani-function);
+    animation-fill-mode: var(--ani-mode);
+}
+
+.red:hover {
+
+    animation-name: red-button;
+    animation-duration: var(--ani-time);
+    animation-timing-function: var(--ani-function);
+    animation-fill-mode: var(--ani-mode);
+}
+
+.green:hover {
+
+    animation-name: green-button;
+    animation-duration: var(--ani-time);
+    animation-timing-function: var(--ani-function);
+    animation-fill-mode: var(--ani-mode);
+}
+
+.blue:hover {
+
+    animation-name: blue-button;
+    animation-duration: var(--ani-time);
+    animation-timing-function: var(--ani-function);
+    animation-fill-mode: var(--ani-mode);
+}
+
+@keyframes normal-button {
+    100% {
+        background-color: white;
+        transform: translate(0, -5px);
+        color: var(--dark-gray);
+    }
+}
+
+@keyframes red-button {
+    100% {
+        background-color: var(--red);
+        transform: translate(0, -5px);
+    }
+}
+
+@keyframes green-button {
+    100% {
+        background-color: var(--green);
+        transform: translate(0, -5px);
+    }
+}
+
+@keyframes blue-button {
+    100% {
+        background-color: var(--blue);
+        transform: translate(0, -5px);
+    }
+}
